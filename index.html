@@ -12,11 +12,9 @@
                 <div class="mainLine"></div>
                 <div class="txt txt1">
                     <h3 class="alex">국내최초</h3>
-                    <span>새로운 가치를 창조하는</span>
                 </div>
                 <div class="txt txt2">
                     <h3 class="alex">배젤리스 창호</h3>
-                    <span>부동산 투자의 미래</span>
                 </div>
                 <div class="contentWrap">
                     <video
@@ -47,21 +45,6 @@
                 var pc = matchMedia("screen and (min-width:1281px)");
 
                 if (pc.matches) {
-                    var width = $(window).width();
-                    var height = $(window).height();
-                    $(window).on("resize", function () {
-                        if (
-                            $(this).width() !== width ||
-                            $(this).height() !== height
-                        ) {
-                            width = $(this).width();
-                            height = $(this).height();
-                            setTimeout(() => {
-                                location.reload();
-                            }, 400);
-                        }
-                    });
-
                     gsap.registerPlugin(ScrollTrigger);
 
                     // main visual
@@ -84,37 +67,40 @@
                         )
                         .to(
                             ".main .visual .txt1",
-                            { left: "130rem", top: "160rem", duration: 6 },
+                            { left: "130rem", duration: 6 },
                             "start0"
                         )
                         .to(
                             ".main .visual .txt2",
                             {
                                 left: "calc(100% - 360rem)",
-                                top: "calc(100% - 200rem)",
+
                                 duration: 6,
                             },
                             "start0"
                         )
                         .to(
                             ".main .visual .mainLine",
-                            { width: "960rem", duration: 6 },
+                            {
+                                width: "0",
+                                height: "0",
+                                xPercent: -50,
+                                yPercent: -50,
+                                duration: 3,
+                            },
                             "start0"
                         )
-                        .to(
-                            ".main .visual .txt span",
-                            { opacity: "1", duration: 6 },
-                            "start0"
-                        )
+
                         .to(".main .visual", { duration: 6 }, "start1")
                         .to(
                             ".main .visual .mainLine",
                             {
-                                width: "560rem",
+                                width: "56rem",
+                                height: "100%",
                                 xPercent: -50,
                                 yPercent: -50,
                                 y: 0,
-                                rotation: -90,
+                                rotation: 0,
                                 duration: 3,
                             },
                             "start2"
@@ -155,62 +141,13 @@
                         .to(".main .visual", { duration: 3 }, "start6");
 
                     let _window = $(window).innerWidth();
-                    let _section03Slide = $(
-                        ".main_section_03 .slide > .flex"
-                    ).outerWidth();
-                    var _scrollbarWidth = $(
-                        ".main_section_03 .scrollbar"
-                    ).width();
-                    var _scrollbarLeft = $(
-                        ".main_section_03 .scrollbar"
-                    ).position().left;
-                    var _scrollbar =
-                        _window - (_scrollbarWidth + _scrollbarLeft);
-                    var startTiming = 3;
-                    var duration = 20;
-
-                    let main_section_03 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".main_section_03",
-                            start: "top top",
-                            scrub: true,
-                            markers: false,
-                            pin: ".pinWrap",
-                        },
-                    });
-
-                    main_section_03
-                        .addLabel("label1")
-                        .to(
-                            ".main_section_03",
-                            { duration: startTiming },
-                            "start0"
-                        )
-                        .to(
-                            ".main_section_03 .slide > .flex",
-                            {
-                                x: "-" + (_section03Slide - _window),
-                                duration: duration,
-                            },
-                            "start1"
-                        )
-                        .to(
-                            ".main .main_section_03 .scrollbar",
-                            { left: _scrollbar + "px", duration: duration },
-                            "start1"
-                        )
-                        .to(
-                            ".main_section_03",
-                            { duration: startTiming },
-                            "start2"
-                        );
 
                     ScrollTrigger.config({
                         limitCallbacks: true,
                         ignoreMobileResize: true,
                     });
                 } else {
-                    // main visual
+                    // main visual 영상
                     $(".visual").addClass("start1");
                     setTimeout(() => {
                         $(".visual").addClass("start2");
@@ -223,29 +160,6 @@
                             }, 2500);
                         }, 2500);
                     }, 2500);
-
-                    //main_section_03
-                    var main_section_03 = new Swiper(
-                        ".main_section_03 .m-slide",
-                        {
-                            slidesPerView: 1.1,
-                            slidesPerGroup: 1,
-                            spaceBetween: 25,
-                            simulateTouch: true,
-                            loop: false,
-                            speed: 600,
-                            scrollbar: {
-                                el: ".main_section_03 .scrollbar",
-                                draggable: true,
-                            },
-                            on: {
-                                slideChange: function () {
-                                    main_section_03.update();
-                                    main_section_03.scrollbar.setTranslate();
-                                },
-                            },
-                        }
-                    );
                 }
             })
             .trigger("resize");
