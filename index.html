@@ -36,132 +36,144 @@
         </main>
     </body>
     <script src="jquery-1.12.4.min.js"></script>
-    <script src="TweenMax.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="TweenMax.min.js"></script>
     <script>
-        $(window)
-            .on("resize", function () {
-                var pc = matchMedia("screen and (min-width:1281px)");
+        $(window).on("resize", function () {
+            var pc = matchMedia("screen and (min-width:1024px)");
 
-                if (pc.matches) {
-                    gsap.registerPlugin(ScrollTrigger);
-
-                    // main visual
-                    let mainVisual = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".visual",
-                            start: "top top",
-                            scrub: true,
-                            markers: false,
-                            pin: true,
-                        },
-                    });
-
-                    mainVisual
-                        .addLabel("label1")
-                        .to(
-                            ".main .visual .txt",
-                            { xPercent: 0, yPercent: 0, duration: 6 },
-                            "start0"
-                        )
-                        .to(
-                            ".main .visual .txt1",
-                            { left: "130rem", duration: 6 },
-                            "start0"
-                        )
-                        .to(
-                            ".main .visual .txt2",
-                            {
-                                left: "calc(100% - 360rem)",
-
-                                duration: 6,
-                            },
-                            "start0"
-                        )
-                        .to(
-                            ".main .visual .mainLine",
-                            {
-                                width: "0",
-                                height: "0",
-                                xPercent: -50,
-                                yPercent: -50,
-                                duration: 3,
-                            },
-                            "start0"
-                        )
-
-                        .to(".main .visual", { duration: 6 }, "start1")
-                        .to(
-                            ".main .visual .mainLine",
-                            {
-                                width: "56rem",
-                                height: "100%",
-                                xPercent: -50,
-                                yPercent: -50,
-                                y: 0,
-                                rotation: 0,
-                                duration: 3,
-                            },
-                            "start2"
-                        )
-                        .to(
-                            ".main .visual .contentWrap",
-                            {
-                                xPercent: -50,
-                                yPercent: -50,
-                                y: 0,
-                                rotation: 0,
-                                height: "560rem",
-                                opacity: "1",
-                                duration: 3,
-                            },
-                            "start2"
-                        )
-                        .to(
-                            ".main .visual .txt",
-                            { opacity: "0", duration: 7 },
-                            "start3"
-                        )
-                        .to(
-                            ".main .visual .mainLine",
-                            { opacity: "0", duration: 7 },
-                            "start3"
-                        )
-                        .to(
-                            ".main .visual .contentWrap",
-                            { width: "100%", height: "100%", duration: 7 },
-                            "start4"
-                        )
-                        .to(
-                            ".main .visual .textWrap",
-                            { opacity: "1", duration: 3 },
-                            "start5"
-                        )
-                        .to(".main .visual", { duration: 3 }, "start6");
-
-                    let _window = $(window).innerWidth();
-
-                    ScrollTrigger.config({
-                        limitCallbacks: true,
-                        ignoreMobileResize: true,
-                    });
-                } else {
-                    // main visual 영상
-                    $(".visual").addClass("start1");
-                    setTimeout(() => {
-                        $(".visual").addClass("start2");
+            if (pc.matches) {
+                var width = $(window).width();
+                var height = $(window).height();
+                $(window).on("resize", function () {
+                    if (
+                        $(this).width() !== width ||
+                        $(this).height() !== height
+                    ) {
+                        width = $(this).width();
+                        height = $(this).height();
                         setTimeout(() => {
-                            $(".visual").addClass("start3");
-                            setTimeout(() => {
-                                $(".visual").addClass("start4");
-                                let visualVideo = $(".visual video").get(0);
-                                visualVideo.play();
-                            }, 2500);
+                            location.reload();
+                        }, 400);
+                    }
+                });
+                gsap.registerPlugin(ScrollTrigger);
+
+                // main visual
+                let mainVisual = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".visual",
+                        start: "top top",
+                        scrub: true,
+                        markers: false,
+                        pin: true,
+                    },
+                });
+
+                mainVisual
+                    .addLabel("label1")
+                    .to(
+                        ".main .visual .txt",
+                        { xPercent: 0, yPercent: 0, duration: 6 },
+                        "start0"
+                    )
+                    .to(
+                        ".main .visual .txt1",
+                        { left: "130rem", duration: 6 },
+                        "start0"
+                    )
+                    .to(
+                        ".main .visual .txt2",
+                        {
+                            left: "calc(100% - 360rem)",
+                            duration: 6,
+                        },
+                        "start0"
+                    )
+                    .to(
+                        ".main .visual .mainLine",
+                        {
+                            width: "0",
+                            height: "0",
+                            xPercent: -50,
+                            yPercent: -50,
+                            duration: 3,
+                        },
+                        "start0"
+                    )
+
+                    .to(".main .visual", { duration: 6 }, "start1")
+                    .to(
+                        ".main .visual .mainLine",
+                        {
+                            width: "56rem",
+                            height: "100%",
+                            xPercent: -50,
+                            yPercent: -50,
+                            y: 0,
+                            rotation: 0,
+                            duration: 3,
+                        },
+                        "start2"
+                    )
+                    .to(
+                        ".main .visual .contentWrap",
+                        {
+                            xPercent: -50,
+                            yPercent: -50,
+                            y: 0,
+                            rotation: 0,
+                            height: "560rem",
+                            opacity: "1",
+                            duration: 3,
+                        },
+                        "start2"
+                    )
+                    .to(
+                        ".main .visual .txt",
+                        { opacity: "0", duration: 7 },
+                        "start3"
+                    )
+                    .to(
+                        ".main .visual .mainLine",
+                        { opacity: "0", duration: 7 },
+                        "start3"
+                    )
+                    .to(
+                        ".main .visual .contentWrap",
+                        { width: "100%", height: "100%", duration: 7 },
+                        "start4"
+                    )
+                    .to(
+                        ".main .visual .textWrap",
+                        { opacity: "1", duration: 3 },
+                        "start5"
+                    )
+                    .to(".main .visual", { duration: 3 }, "start6");
+
+                let _window = $(window).innerWidth();
+
+                ScrollTrigger.config({
+                    limitCallbacks: true,
+                    ignoreMobileResize: true,
+                });
+            } else {
+                // main visual 영상
+                $(".visual").addClass("start1");
+                setTimeout(() => {
+                    $(".visual").addClass("start2");
+                    setTimeout(() => {
+                        $(".visual").addClass("start3");
+                        setTimeout(() => {
+                            $(".visual").addClass("start4");
+                            let visualVideo = $(".visual video").get(0);
+                            visualVideo.play();
                         }, 2500);
                     }, 2500);
-                }
-            })
-            .trigger("resize");
+                }, 2500);
+            }
+        });
     </script>
 </html>
