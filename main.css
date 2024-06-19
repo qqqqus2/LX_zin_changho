@@ -1,3 +1,62 @@
+@charset "UTF-8";
+/* ============================
+  pretendard
+    unicode-range : 국문 영문 공통
+============================*/
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Pretendard Black"), url(./fonts/Pretendard-Black.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Pretendard ExtraBold"), url(./fonts/Pretendard-ExtraBold.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"), url(./fonts/Pretendard-Bold.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url(./fonts/Pretendard-SemiBold.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"), url(./fonts/Pretendard-Medium.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), url(./fonts/Pretendard-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"), url(./fonts/Pretendard-Light.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: local("Pretendard ExtraLight"), url(./fonts/Pretendard-ExtraLight.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: local("Pretendard Thin"), url(./fonts/Pretendard-Thin.woff2) format("woff2");
+}
 /* reset */
 * {
   margin: 0;
@@ -129,22 +188,14 @@ var {
   font-weight: normal;
 }
 
-html {
-  font-size: 0.0520833318vw;
-}
-
-.main .visual .main .section {
-  position: relative;
-}
-.main .visual .main .visual {
+.main .visual {
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
+  background-color: #da291c;
   color: #fff;
   position: relative;
   overflow: hidden;
-  font-size: 20rem;
-  background-color: #da291c;
 }
 
 .main .visual .mainLine {
@@ -307,29 +358,4 @@ html {
 
 .main .main_section_01.aos-animate .textWrap.right p {
   opacity: 1;
-}
-
-.swiper-slide {
-  overflow: hidden;
-}
-
-.slide-inner {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  background-size: cover;
-}
-
-.section02-1 {
-  background-image: url(https://pp.userapi.com/c836139/v836139003/63ce1/QThPx7qPzvU.jpg);
-}
-
-.section02-2 {
-  background-image: url(https://pp.userapi.com/c412624/v412624691/4136/_da_uAA6ha8.jpg);
-}
-
-.section02-3 {
-  background-image: url(https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg);
 }
